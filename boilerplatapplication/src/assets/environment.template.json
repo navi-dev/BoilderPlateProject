@@ -1,0 +1,4 @@
+{
+  "env":"${ENV}",
+  "apiUri": "${API_URI}"
+}

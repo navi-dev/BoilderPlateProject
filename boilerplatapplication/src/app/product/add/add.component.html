@@ -1,0 +1,55 @@
+<div fxLayout="row wrap" class="matero-row">
+  <div fxFlex="100" fxFlex.lt-sm="100" class="matero-col">
+    <mat-card>
+      <mat-card-title>Craete Product</mat-card-title>
+      <form [formGroup]="formGroup" class="matero-form-horizontal">
+        <div fxLayout="row wrap" fxLayoutGap="8px grid">
+          <div fxFlex="100" fxFlex.lt-sm="100">
+            <mat-form-field>
+              <mat-label>Name</mat-label>
+              <input matInput formControlName="name" required>
+              <mat-error *ngIf="formGroup.get('name').invalid">Please enter product name
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="100" fxFlex.lt-sm="100">
+            <mat-form-field>
+              <mat-label>Price</mat-label>
+              <input matInput placeholder="" formControlName="price" required>
+              <mat-error *ngIf="formGroup.get('price').invalid">Please enter product price
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="100" fxFlex.lt-sm="100">
+            <mat-form-field>
+              <mat-label>Description</mat-label>
+              <input matInput formControlName="description">
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="100" fxFlex.lt-sm="100">
+            <mat-form-field>
+              <mat-label>Category</mat-label>
+              <mat-select required formControlName="categoryId">
+                <mat-option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="formGroup.get('categoryId').invalid">Please select a category
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row wrap" fxLayoutGap="8px grid">
+          <div fxFlex="5" fxFlex.lt-sm="100">
+            <button mat-raised-button color="primary" class="m-t-8" (click)="save();">Save</button>
+          </div>
+          <div fxFlex="5" fxFlex.lt-sm="100">
+            <button mat-raised-button color="secodary" class="m-t-8" (click)="cancel();">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+
+</div>
