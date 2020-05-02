@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonMaterialModule } from './common-material-module';
+import { CommonHttpServiceService } from './shared/service/common-http-service.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,8 +17,9 @@ import { CommonMaterialModule } from './common-material-module';
     AppRoutingModule,
     NoopAnimationsModule,
     CommonMaterialModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [CommonHttpServiceService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

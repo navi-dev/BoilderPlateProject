@@ -1,9 +1,11 @@
+import { Product } from './../model/product.model';
+import { CommonHttpServiceService } from './../../shared/service/common-http-service.service';
 import { ProductCategory } from './../model/product-category.model';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { pipe, EMPTY, Observable } from 'rxjs';
 import { finalize, catchError } from 'rxjs/operators';
-import { Product } from '../model/product.model';
+import { ProductService } from '../service/product.service';
 
 @Component({
   selector: 'app-listing',
@@ -19,7 +21,8 @@ export class ListingComponent implements OnInit {
   searchFormGroup: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private productService: ProductService,
   ) { }
 
   ngOnInit() {
@@ -38,14 +41,13 @@ export class ListingComponent implements OnInit {
 
   searchProducts() {
     this.setSpinnerValue(false);
-    // this.students$ =
-    //   this.studentService.apiStudentGetAllStudentsGet()
-    //     .pipe(finalize(() => {
-    //       this.setSpinnerValue(false);
-    //     }), catchError((error) => {
-    //       this.setSpinnerValue(false);
-    //       return EMPTY;
-    //     }));
+    this.products$ = this.productService.getProduct()
+      .pipe(finalize(() => {
+        this.setSpinnerValue(false);
+      }), catchError((error) => {
+        this.setSpinnerValue(false);
+        return EMPTY;
+      }));
   }
 
   showSpinner(): boolean {

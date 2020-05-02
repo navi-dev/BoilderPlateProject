@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace BoilerPlateApiApp.Model
+﻿namespace BoilerPlateApiApp.Model
 {
     public class Product
     {
@@ -16,5 +11,6 @@ namespace BoilerPlateApiApp.Model
         public int CategoryId { get; set; }
 
         public string Tag { get; set; }
+        public decimal Price { get; set; }
     }
 }

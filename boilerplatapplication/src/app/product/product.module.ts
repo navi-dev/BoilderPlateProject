@@ -16,6 +16,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { CommonMaterialModule } from '../common-material-module';
 import { CommonUtilityModule } from '../common-utility/common-utility.module';
+import { ProductService } from './service/product.service';
 
 
 
@@ -38,6 +39,7 @@ import { CommonUtilityModule } from '../common-utility/common-utility.module';
     CommonMaterialModule,
     MatButtonModule,
     CommonUtilityModule
-  ]
+  ],
+  providers: [ProductService]
 })
 export class ProductModule { }

@@ -26,6 +26,8 @@ namespace BoilerPlateApiApp.Controllers
                     CategoryId = i,
                     Id = i,
                     Tag = "Tag " + i,
+                    Price = 100 + i,
+
                 };
 
                 products.Add(product);

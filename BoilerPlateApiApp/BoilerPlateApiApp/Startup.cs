@@ -8,6 +8,7 @@ namespace BoilerPlateApiApp
 {
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -18,6 +19,15 @@ namespace BoilerPlateApiApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                                  configurePolicy: builder =>
+                                  {
+                                      builder.WithOrigins("*");
+                                  });
+            });
+
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
@@ -44,7 +54,7 @@ namespace BoilerPlateApiApp
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
-
+            app.UseCors(MyAllowSpecificOrigins);
             app.UseMvc();
         }
     }
